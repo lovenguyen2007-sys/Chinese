@@ -3,277 +3,253 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Học Tiếng Trung Mỗi Ngày</title>
+    <title>Học Tiếng Trung - Luyện Phát Âm</title>
     <style>
         :root {
-            --primary-color: #de2910; /* Màu đỏ cờ Trung Quốc */
-            --secondary-color: #ffde00; /* Màu vàng */
-            --text-color: #333;
-            --bg-color: #f7f9fa;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --primary-color: #e74c3c;
+            --secondary-color: #2ecc71;
+            --bg-color: #f9f9f9;
+            --text-color: #2c3e50;
         }
 
         body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 2rem 1rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            color: var(--secondary-color);
-            font-weight: bold;
-        }
-
-        nav {
+            margin: 0;
+            padding: 20px;
             display: flex;
             justify-content: center;
-            background: #fff;
-            padding: 1rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            margin-bottom: 2rem;
-        }
-
-        nav button {
-            background: none;
-            border: 2px solid transparent;
-            font-size: 1.1rem;
-            font-weight: 600;
-            padding: 0.5rem 1.5rem;
-            margin: 0 0.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 5px;
-        }
-
-        nav button.active, nav button:hover {
-            border-color: var(--primary-color);
-            color: var(--primary-color);
+            align-items: center;
+            min-height: 100vh;
         }
 
         .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        .lesson-section {
-            display: none;
             background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            animation: fadeIn 0.5s ease;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
         }
 
-        .lesson-section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        h2 {
-            margin-bottom: 1.5rem;
+        h1 {
             color: var(--primary-color);
-            border-bottom: 2px solid #eee;
-            padding-bottom: 0.5rem;
-        }
-
-        .word-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
+            margin-bottom: 30px;
         }
 
         .word-card {
-            background: #fff;
-            border: 1px solid #e1e8ed;
+            background: #fff8f7;
+            border: 2px solid #ffbcbc;
             border-radius: 8px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: transform 0.2s, box-shadow 0.2s;
-            position: relative;
+            padding: 20px;
+            margin-bottom: 20px;
         }
 
-        .word-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-        }
-
-        .chinese {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
+        .chinese-text {
+            font-size: 48px;
             font-weight: bold;
+            margin: 0;
+            color: #333;
         }
 
         .pinyin {
-            font-size: 1.1rem;
-            color: #777;
-            font-style: italic;
-            margin-bottom: 0.5rem;
+            font-size: 20px;
+            color: #7f8c8d;
+            margin: 5px 0 10px 0;
         }
 
         .meaning {
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: var(--text-color);
-            margin-bottom: 1rem;
+            font-size: 16px;
+            color: #555;
+            font-style: italic;
         }
 
-        .btn-audio {
-            background-color: var(--secondary-color);
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
             border: none;
-            color: #333;
-            padding: 0.4rem 1rem;
-            font-size: 0.9rem;
-            font-weight: bold;
-            border-radius: 20px;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 25px;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: all 0.3s ease;
+            margin: 5px;
         }
 
-        .btn-audio:hover {
-            background-color: #ffd000;
+        .btn:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
         }
 
-        footer {
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-            color: #888;
-            font-size: 0.9rem;
+        .btn-listen {
+            background-color: #3498db;
+        }
+
+        .btn-speak {
+            background-color: #e67e22;
+        }
+
+        .btn-speak.recording {
+            background-color: #c0392b;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .result-box {
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 6px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .fail {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .user-transcript {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+            font-weight: normal;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Xin Chào! Hán Ngữ Mỗi Ngày</h1>
-        <p>Học tiếng Trung giao tiếp từ cơ bản đến nâng cao</p>
-    </header>
-
-    <nav>
-        <button class="nav-btn active" onclick="switchLesson('lesson1')">Bài 1: Chào hỏi</button>
-        <button class="nav-btn" onclick="switchLesson('lesson2')">Bài 2: Số đếm</button>
-        <button class="nav-btn" onclick="switchLesson('lesson3')">Bài 3: Gia đình</button>
-    </nav>
-
-    <div class="container">
-        <section id="lesson1" class="lesson-section active">
-            <h2>Bài 1: Chào hỏi cơ bản</h2>
-            <div class="word-grid" id="grid-l1"></div>
-        </section>
-
-        <section id="lesson2" class="lesson-section">
-            <h2>Bài 2: Số đếm (1 - 10)</h2>
-            <div class="word-grid" id="grid-l2"></div>
-        </section>
-
-        <section id="lesson3" class="lesson-section">
-            <h2>Bài 3: Thành viên Gia đình</h2>
-            <div class="word-grid" id="grid-l3"></div>
-        </section>
+<div class="container">
+    <h1>汉语口语练习</h1>
+    
+    <div class="word-card">
+        <p class="chinese-text" id="chineseWord">你好</p>
+        <p class="pinyin" id="pinyinText">nǐ hǎo</p>
+        <p class="meaning" id="meaningText">Xin chào</p>
     </div>
 
-    <footer>
-        <p>© 2026 Trang Web Học Tiếng Trung. Phát triển phục vụ mục đích học tập.</p>
-    </footer>
+    <div>
+        <button class="btn btn-listen" id="btnListen">🔊 Nghe mẫu</button>
+        <button class="btn btn-speak" id="btnSpeak">🎤 Nhấn để nói</button>
+        <button class="btn" id="btnNext" style="background-color: #2ecc71;">Tiếp theo ➔</button>
+    </div>
 
-    <script>
-        // Dữ liệu các bài học
-        const lessonsData = {
-            lesson1: [
-                { hz: "你好", py: "nǐ hǎo", vn: "Xin chào" },
-                { hz: "谢谢", py: "xièxie", vn: "Cảm ơn" },
-                { hz: "再见", py: "zàijiàn", vn: "Tạm biệt" },
-                { hz: "对不起", py: "duìbuqǐ", vn: "Xin lỗi" },
-                { hz: "没关系", py: "méi guānxi", vn: "Không có gì/Không sao" }
-            ],
-            lesson2: [
-                { hz: "一", py: "yī", vn: "Số 1" },
-                { hz: "二", py: "èr", vn: "Số 2" },
-                { hz: "三", py: "sān", vn: "Số 3" },
-                { hz: "五", py: "wǔ", vn: "Số 5" },
-                { hz: "十", py: "shí", vn: "Số 10" }
-            ],
-            lesson3: [
-                { hz: "爸爸", py: "bàba", vn: "Bố" },
-                { hz: "妈妈", py: "māma", vn: "Mẹ" },
-                { hz: "哥哥", py: "gēge", vn: "Anh trai" },
-                { hz: "姐姐", py: "jiějie", vn: "Chị gái" },
-                { hz: "弟弟", py: "dìdi", vn: "Em trai" }
-            ]
+    <div class="result-box" id="resultBox">
+        <span id="resultMessage"></span>
+        <div class="user-transcript" id="userTranscript"></div>
+    </div>
+</div>
+
+<script>
+    // Dữ liệu câu hỏi mẫu
+    const wordList = [
+        { word: "你好", pinyin: "nǐ hǎo", meaning: "Xin chào" },
+        { word: "谢谢", pinyin: "xièxie", meaning: "Cảm ơn" },
+        { word: "再见", pinyin: "zàijiàn", meaning: "Tạm biệt" },
+        { word: "我爱你", pinyin: "wǒ ài nǐ", meaning: "Tôi yêu bạn" },
+        { word: "你想吃什么？", pinyin: "nǐ xiǎng chī shénme?", meaning: "Bạn muốn ăn gì?" }
+    ];
+
+    let currentIndex = 0;
+
+    // DOM Elements
+    const chineseWord = document.getElementById('chineseWord');
+    const pinyinText = document.getElementById('pinyinText');
+    const meaningText = document.getElementById('meaningText');
+    const btnListen = document.getElementById('btnListen');
+    const btnSpeak = document.getElementById('btnSpeak');
+    const btnNext = document.getElementById('btnNext');
+    const resultBox = document.getElementById('resultBox');
+    const resultMessage = document.getElementById('resultMessage');
+    const userTranscript = document.getElementById('userTranscript');
+
+    // Cập nhật giao diện từ vựng
+    function loadWord(index) {
+        chineseWord.textContent = wordList[index].word;
+        pinyinText.textContent = wordList[index].pinyin;
+        meaningText.textContent = wordList[index].meaning;
+        resultBox.style.display = 'none';
+    }
+
+    // 1. Tính năng Phát âm mẫu (Text-to-Speech)
+    btnListen.addEventListener('click', () => {
+        const utterance = new SpeechSynthesisUtterance(wordList[currentIndex].word);
+        utterance.lang = 'zh-CN'; // Đặt ngôn ngữ là tiếng Trung Phổ Thông
+        window.speechSynthesis.speak(utterance);
+    });
+
+    // 2. Tính năng Nhận diện giọng nói (Speech-to-Text)
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    
+    if (!SpeechRecognition) {
+        alert("Trình duyệt của bạn không hỗ trợ nhận diện giọng nói. Vui lòng dùng Google Chrome.");
+    } else {
+        const recognition = new SpeechRecognition();
+        recognition.lang = 'zh-CN'; // Nhận diện tiếng Trung
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+
+        btnSpeak.addEventListener('click', () => {
+            recognition.start();
+            btnSpeak.classList.add('recording');
+            btnSpeak.textContent = "🎙️ Đang lắng nghe...";
+        });
+
+        recognition.onresult = (event) => {
+            const speechResult = event.results[0][0].transcript;
+            const targetWord = wordList[currentIndex].word;
+
+            // Xử lý chuẩn hóa chuỗi để so sánh (xóa dấu câu cơ bản)
+            const cleanSpeech = speechResult.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()？。，]/g,"");
+            const cleanTarget = targetWord.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()？。，]/g,"");
+
+            resultBox.style.display = 'block';
+            userTranscript.textContent = `Bạn đã nói: "${speechResult}"`;
+
+            if (cleanSpeech === cleanTarget) {
+                resultBox.className = "result-box success";
+                resultMessage.textContent = "🎉 Tuyệt vời! Phát âm chính xác.";
+            } else {
+                resultBox.className = "result-box fail";
+                resultMessage.textContent = "❌ Chưa chính xác. Hãy thử lại!";
+            }
         };
 
-        // Hàm hiển thị dữ liệu lên giao diện
-        function renderLessons() {
-            for (let lessonId in lessonsData) {
-                const grid = document.getElementById(`grid-${lessonId.replace('lesson', 'l')}`);
-                if (!grid) continue;
-                
-                lessonsData[lessonId].forEach(word => {
-                    const card = document.createElement('div');
-                    card.className = 'word-card';
-                    card.innerHTML = `
-                        <div class="chinese">${word.hz}</div>
-                        <div class="pinyin">${word.py}</div>
-                        <div class="meaning">${word.vn}</div>
-                        <button class="btn-audio" onclick="speak('${word.hz}')">🔊 Nghe</button>
-                    `;
-                    grid.appendChild(card);
-                });
-            }
-        }
+        recognition.onspeechend = () => {
+            recognition.stop();
+            btnSpeak.classList.remove('recording');
+            btnSpeak.textContent = "🎤 Nhấn để nói";
+        };
 
-        // Hàm chuyển đổi qua lại giữa các bài học
-        function switchLesson(lessonId) {
-            // Ẩn tất cả các section
-            document.querySelectorAll('.lesson-section').forEach(sec => sec.classList.remove('active'));
-            // Hiện section được chọn
-            document.getElementById(lessonId).classList.add('active');
+        recognition.onerror = (event) => {
+            btnSpeak.classList.remove('recording');
+            btnSpeak.textContent = "🎤 Nhấn để nói";
+            alert("Đã xảy ra lỗi nhận diện: " + event.error);
+        };
+    }
 
-            // Cập nhật trạng thái nút bấm active ở thanh menu
-            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-        }
+    // Chuyển câu tiếp theo
+    btnNext.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % wordList.length;
+        loadWord(currentIndex);
+    });
 
-        // Hàm phát âm Text-to-Speech bằng tiếng Trung chuẩn (zh-CN)
-        function speak(text) {
-            if ('speechSynthesis' in window) {
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'zh-CN'; // Cấu hình giọng đọc tiếng Trung phổ thông
-                utterance.rate = 0.8; // Tốc độ đọc hơi chậm một chút để dễ nghe
-                window.speechSynthesis.cancel(); // Dừng âm thanh đang phát trước đó (nếu có)
-                window.speechSynthesis.speak(utterance);
-            } else {
-                alert("Trình duyệt của bạn không hỗ trợ tính năng phát âm.");
-            }
-        }
+    // Khởi tạo lần đầu
+    loadWord(currentIndex);
+</script>
 
-        // Khởi chạy khi trang web tải xong
-        window.onload = renderLessons;
-    </script>
 </body>
 </html>
